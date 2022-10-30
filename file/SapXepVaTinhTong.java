@@ -21,7 +21,6 @@ public class SapXepVaTinhTong {
             output.write("Day so tang dan: " + arrayList.toString().substring(1, arrayList.toString().length()-1) + "\n");
             output.write("Tong cac so: " + tong);
             System.out.println("Day so tang dan: " + arrayList.toString().substring(1, arrayList.toString().length()-1));
-            System.out.println("Day so tang dan: " + arrayList);
             System.out.println("Tong cac so: " + tong);
             output.close();
         } catch (IOException e) {
