@@ -6,7 +6,7 @@ import java.io.OutputStream;
 import java.net.Socket;
 
 public class Client {
-    public final static String SERVER_IP = "172.20.10.9";
+    public final static String SERVER_IP = "192.168.100.106";
     public final static int SERVER_PORT = 9;
 
     public static void main(String[]args) throws IOException, InterruptedException{
