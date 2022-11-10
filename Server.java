@@ -8,7 +8,7 @@ import java.util.Collections;
 import java.util.StringTokenizer;
 
 public class Server {
-    public final static int SERVER_PORT = 7;
+    public final static int SERVER_PORT = 100;
 
     public static void main(String[] args) throws IOException {
         ServerSocket serverSocket = null;

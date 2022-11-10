@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class Client {
     public final static String SERVER_IP = "127.0.0.1";
-    public final static int SERVER_PORT = 7;
+    public final static int SERVER_PORT = 9;
     public static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) throws IOException, InterruptedException {
