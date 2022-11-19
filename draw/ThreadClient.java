@@ -29,18 +29,14 @@ public class ThreadClient extends Thread{
 
                 // If this point is inside the circle, print it
                 if (x*x + y*y <= r*r+1 ){
-                    System.out.print(".");
                     toClient.append(".");
                 }
                 else{
                     // If outside the circle, print space
-                    System.out.print(" ");
                     toClient.append(" ");
                 }
-                System.out.print(" ");
                 toClient.append(" ");
             }
-            System.out.println();
             toClient.append("\n");
         }
     }
@@ -71,7 +67,6 @@ public class ThreadClient extends Thread{
                     toClient.append("  ");
                 }
             }
-            System.out.println("\n");
             toClient.append("\n");
         }
     }
