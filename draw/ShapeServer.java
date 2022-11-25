@@ -4,8 +4,8 @@ import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-public class ThreadServer {
-    public final static int SERVER_PORT = 1000;////10.10.10.59
+public class ShapeServer {
+    public final static int SERVER_PORT = 999;////172.20.10.9
     public static void main(String[] args) throws IOException {
         ServerSocket serverSocket = null;
         try {
@@ -17,7 +17,7 @@ public class ThreadServer {
                 try {
                     Socket socket = serverSocket.accept();
                     System.out.println("Client accepted: " + socket);
-                    ThreadClient thread = new ThreadClient(socket);
+                    ShapeThread thread = new ShapeThread(socket);
                     thread.start();
                 } catch (IOException e) {System.err.println(" Connection Error: " + e);}
             }

@@ -39,6 +39,8 @@ public class ThreadClient extends Thread{
             }
             toClient.append("\n");
         }
+        toClient.append("q");
+        toClient.append("\n");
     }
 
     public void drawRectangle(StringBuilder toClient, int chieuRong, int chieuDai) {
@@ -54,6 +56,8 @@ public class ThreadClient extends Thread{
             }
             toClient.append("\n");
         }
+        toClient.append("q");
+        toClient.append("\n");
     }
 
     public void drawSquare(StringBuilder toClient, int canh) {
@@ -69,43 +73,48 @@ public class ThreadClient extends Thread{
             }
             toClient.append("\n");
         }
+        toClient.append("q");
+        toClient.append("\n");
     }
 
     @Override
     public void run() {
-        try {
-            DataInputStream is = new DataInputStream(socket.getInputStream());
-            DataOutputStream os = new DataOutputStream(socket.getOutputStream());
-            String message = is.readUTF();
-            System.out.println("Client: " + message);
+        try{
+            while (true){
+                DataInputStream is = new DataInputStream(socket.getInputStream());
+                DataOutputStream os = new DataOutputStream(socket.getOutputStream());
+                String message = "";
+                message = is.readUTF();
+                System.out.println("Client: " + message);
 
-            StringTokenizer stringTokenizer = new StringTokenizer(message, " ");
-            ArrayList<String> arrayList = new ArrayList<>();
-            while (stringTokenizer.hasMoreTokens()) {
-                String token = stringTokenizer.nextToken();
-                arrayList.add(token);
+                StringTokenizer stringTokenizer = new StringTokenizer(message, " ");
+                ArrayList<String> arrayList = new ArrayList<>();
+                while (stringTokenizer.hasMoreTokens()) {
+                    String token = stringTokenizer.nextToken();
+                    arrayList.add(token);
+                }
+
+                StringBuilder toClient = new StringBuilder();
+                if(arrayList.get(0).equalsIgnoreCase("chunhat")){
+                    drawRectangle(toClient, Integer.parseInt(arrayList.get(1)), Integer.parseInt(arrayList.get(2)));
+                    os.flush();
+                }
+
+                if(arrayList.get(0).equalsIgnoreCase("vuong")){
+                    drawSquare(toClient, Integer.parseInt(arrayList.get(1)));
+                    os.flush();
+                }
+
+                if(arrayList.get(0).equalsIgnoreCase("tron")){
+                    drawCircle(toClient, Integer.parseInt(arrayList.get(1)));
+                    os.flush();
+                }
+
+                System.out.println(toClient);
+                os.writeUTF(String.valueOf(toClient));
             }
-
-            StringBuilder toClient = new StringBuilder();
-            if(arrayList.get(0).equalsIgnoreCase("chunhat")){
-                drawRectangle(toClient, Integer.parseInt(arrayList.get(1)), Integer.parseInt(arrayList.get(2)));
-            }
-
-            if(arrayList.get(0).equalsIgnoreCase("vuong")){
-                drawSquare(toClient, Integer.parseInt(arrayList.get(1)));
-            }
-
-            if(arrayList.get(0).equalsIgnoreCase("tron")){
-                drawCircle(toClient, Integer.parseInt(arrayList.get(1)));
-            }
-
-            System.out.println(toClient);
-            os.writeUTF(String.valueOf(toClient));
-            is.close();
-            os.close();
-            socket.close();
-        } catch (IOException e) {
-            System.out.println("Connection lost from: " + socket.getInetAddress().getHostAddress());
+        }catch (Exception e) {
+            System.out.println("Erro from: " + socket.getInetAddress().getHostAddress());
         }
     }
 }
