@@ -4,8 +4,8 @@ import java.io.*;
 import java.net.Socket;
 
 public class Client {
-    public final static String SERVER_IP = "10.10.12.204"; //"10.10.10.59";
-    public final static int SERVER_PORT = 100;
+    public final static String SERVER_IP = "127.0.0.1";//"10.10.11.27";//"192.168.61.106"; //"10.10.10.59";
+    public final static int SERVER_PORT = 66;
 
     public static void main(String[]args) throws IOException, InterruptedException{
         Socket socket = null;

@@ -21,6 +21,7 @@ public class ChatThread extends Thread{
             String message = is.readUTF();
             System.out.println("Client: " + message);
             os.writeUTF("Sap xep cac so: " + sort(message) + "\nTong: " + sum(message));
+            System.out.println("Sap xep cac so: " + sort(message) + "\nTong: " + sum(message));
             is.close();
             os.close();
             socket.close();

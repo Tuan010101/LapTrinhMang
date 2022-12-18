@@ -4,7 +4,7 @@ import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-public class ChatClient {
+public class ChatServer {
     public final static int SERVER_PORT = 66;
     public static void main(String[] args) throws IOException{
         ServerSocket serverSocket = null;

@@ -1,11 +1,11 @@
-package thread;
+package ThreadTong15;
 
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-public class ChatThreadServer {
-    public final static int SERVER_PORT = 100;////10.10.10.59
+public class ThreadServer {
+    public final static int SERVER_PORT = 8989;////10.10.10.59
     public static void main(String[] args) throws IOException {
         ServerSocket serverSocket = null;
         try {
@@ -17,7 +17,7 @@ public class ChatThreadServer {
                 try {
                     Socket socket = serverSocket.accept();
                     System.out.println("Client accepted: " + socket);
-                    ChatThread thread = new ChatThread(socket);
+                    ThreadClient thread = new ThreadClient(socket);
                     thread.start();
                 } catch (IOException e) {System.err.println(" Connection Error: " + e);}
             }
